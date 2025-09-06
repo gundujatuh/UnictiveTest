@@ -1,0 +1,50 @@
+﻿@page "{id:int}"
+@model UnictiveTest.Pages.Users.EditModel
+@{
+    ViewData["Title"] = "Edit User";
+}
+<h3>Edit User</h3>
+<form method="post" class="card p-3 bg-white shadow-sm">
+    <input type="hidden" asp-for="Input.Id" />
+
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input asp-for="Input.Name" class="form-control" />
+        <span asp-validation-for="Input.Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input asp-for="Input.Email" class="form-control" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">New Password (optional)</label>
+        <input asp-for="Input.NewPassword" type="password" class="form-control" />
+        <span asp-validation-for="Input.NewPassword" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Hobbies</label>
+        @for (int i = 0; i < Model.HobbyInputs.Count; i++)
+        {
+            <div class="input-group mb-2">
+                <input asp-for="HobbyInputs[i]" class="form-control" />
+                <button type="submit"
+                        asp-page-handler="RemoveHobby"
+                        asp-route-index="@i"
+                        class="btn btn-danger">
+                    Remove
+                </button>
+            </div>
+        }
+
+        <button type="submit" formaction="/Users/Edit/@Model.Input.Id?handler=AddHobby" class="btn btn-secondary btn-sm">
+            + Add Hobby
+        </button>
+    </div>
+
+    <button type="submit" formaction="/Users/Edit/@Model.Input.Id" class=" btn btn-primary">Save</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>

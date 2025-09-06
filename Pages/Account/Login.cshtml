@@ -1,0 +1,38 @@
+﻿@page
+@model UnictiveTest.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="d-flex align-items-center justify-content-center vh-100 bg-light">
+    <div class="col-md-4">
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-body p-4">
+                <div class="text-center mb-4">
+                    <i class="bi bi-person-circle" style="font-size: 3rem; color: #0d6efd;"></i>
+                    <h4 class="fw-bold mt-2">Login</h4>
+                    <p class="text-muted">Silakan masuk ke akun Anda</p>
+                </div>
+
+                <form method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input asp-for="Input.Email" class="form-control" placeholder="name@example.com" />
+                        <span class="text-danger" asp-validation-for="Input.Email"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input asp-for="Input.Password" type="password" class="form-control" placeholder="********" />
+                        <span class="text-danger" asp-validation-for="Input.Password"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 rounded-3">Login</button>
+                </form>
+
+                @if (!string.IsNullOrEmpty(Model.Error))
+                {
+                    <div class="alert alert-danger mt-3 text-center">@Model.Error</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+﻿@page
+@model UnictiveTest.Pages.Users.DeleteModel
+@{
+    ViewData["Title"] = "Delete User";
+}
+<h3>Delete User</h3>
+<div class="card p-3 bg-white shadow-sm">
+    <p>Are you sure you want to delete <strong>@Model.User?.Name</strong>?</p>
+    <form method="post">
+        <input type="hidden" name="id" value="@Model.User?.Id" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
