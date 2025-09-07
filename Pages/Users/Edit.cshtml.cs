@@ -76,7 +76,6 @@ namespace UnictiveTest.Pages.Users
 
             if (user == null) return NotFound();
 
-            // Update field user
             user.Name = Input.Name;
             user.Email = Input.Email;
 
@@ -85,7 +84,6 @@ namespace UnictiveTest.Pages.Users
                 user.PasswordHash = PasswordHasher.Hash(Input.NewPassword);
             }
 
-            // Update hobbies
             user.Hobbies.Clear();
             foreach (var hobby in HobbyInputs.Where(h => !string.IsNullOrWhiteSpace(h)))
             {

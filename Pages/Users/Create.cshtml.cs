@@ -28,7 +28,7 @@ namespace UnictiveTest.Pages.Users
         {
             if (!HobbyInputs.Any())
             {
-                HobbyInputs.Add(""); // default satu field
+                HobbyInputs.Add("");
             }
         }
 

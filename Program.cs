@@ -37,7 +37,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key!))
         };
 
-        // Read token from cookie for Razor Pages requests
         options.Events = new JwtBearerEvents
         {
             OnMessageReceived = context =>
@@ -70,7 +69,6 @@ app.Use(async (context, next) =>
 {
     var token = context.Request.Cookies["X-Access-Token"];
 
-    // kalau belum login dan bukan akses ke halaman login
     if (string.IsNullOrEmpty(token) && !context.Request.Path.StartsWithSegments("/Account/Login"))
     {
         context.Response.Redirect("/Account/Login");
